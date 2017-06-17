@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+IFS=. read ip1 ip2 ip3 ip4 <<< $(hostname -i)
+
+hostip="$ip1.$ip2.$ip3.1"
+
+for h in $HOSTS_ADD_TO_HOSTS; do
+  echo $hostip $h >> /etc/hosts
+done
